@@ -22,7 +22,7 @@ public class CollectionTestSuite {
     @Test
     void testOddNumbersExterminatoryEmptyList() {
         //Given
-        List<Integer> list = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         //When
         List<Integer> result = oddNumbersExterminator.exterminate(list);
@@ -35,12 +35,19 @@ public class CollectionTestSuite {
     @Test
     void testOddNumbersExterminatorNormalList() {
         //Given
-        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
 
         OddNumbersExterminator oddNumbersExterminator1 = new OddNumbersExterminator();
         //When
         List<Integer> result = oddNumbersExterminator1.exterminate(numbers);
-        List<Integer> expected = List.of(2, 4);
+        List<Integer> expected = new ArrayList<>();
+        expected.add(2);
+        expected.add(4);
         //Then
         Assertions.assertEquals(expected, result);
     }

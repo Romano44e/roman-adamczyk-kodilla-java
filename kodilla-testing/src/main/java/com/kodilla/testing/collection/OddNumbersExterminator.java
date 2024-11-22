@@ -1,19 +1,16 @@
 package com.kodilla.testing.collection;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OddNumbersExterminator {
 
-    private List<Integer> numbers;
+    private ArrayList<Integer> numbers;
 
     public OddNumbersExterminator() {}
 
-    public List<Integer> exterminate(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            if (number % 2 != 0) {
-                numbers.remove(number);
-            }
-        }
+    public ArrayList<Integer> exterminate(ArrayList<Integer> numbers) {
+        numbers.removeIf(number -> number % 2 != 0);
         return numbers;
     }
 }
