@@ -1,35 +1,19 @@
 package com.kodilla.testing;
 
 import com.kodilla.testing.calculator.Calculator;
+import com.kodilla.testing.collection.OddNumbersExterminator;
 import com.kodilla.testing.user.SimpleUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestingMain {
     public static void main(String[] args) {
-        SimpleUser simpleUser = new SimpleUser("theForumUser");
+        OddNumbersExterminator oddNumbersExterminator1 = new OddNumbersExterminator();
+        List<Integer> numbers1 = List.of(1, 2, 3, 4, 5);
+        //When
+        List<Integer> result1 = oddNumbersExterminator1.exterminate(numbers1);
 
-        String result = simpleUser.getUsername();
-
-        if (result.equals("theForumUser")) {
-            System.out.println("test OK");
-        } else {
-            System.out.println("Error!");
-        }
-
-        System.out.println("Test - pierwszy test jednostkowy:");
-        Calculator calculator = new Calculator(5,3);
-
-        int sum = calculator.add();
-        if (sum == 8) {
-            System.out.println("test OK");
-        } else {
-            System.out.println("Error!");
-        }
-
-        int subtract = calculator.subtract();
-        if (subtract == 2) {
-            System.out.println("test OK");
-        } else {
-            System.out.println("Error!");
-        }
+        System.out.println(result1.size());
     }
 }
