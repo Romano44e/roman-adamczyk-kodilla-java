@@ -11,7 +11,7 @@ public class StatisticsClass {
         this.statistics = statistics;
     }
 
-    double usersCount;
+    int usersCount;
     double postsCount;
     double commentsCount;
     double averagePostsPerUser;
@@ -19,20 +19,14 @@ public class StatisticsClass {
     double averageCommentsPerPost;
 
 
-    public List<Double> calculateAdvStatistics(Statistics statistics) {
-        List<Double> statisticsList = new ArrayList<Double>();
+    public double calculateAdvStatistics(Statistics statistics) {
+        usersCount = statistics.usersNames().size();
         postsCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
-        averagePostsPerUser = postsCount / (double) usersCount;
-        averageCommentsPerUser = commentsCount / (double) usersCount;
-        averageCommentsPerPost = commentsCount / (double) postsCount;
-        statisticsList.add(0, usersCount);
-        statisticsList.add(1, postsCount);
-        statisticsList.add(2, commentsCount);
-        statisticsList.add(3, averagePostsPerUser);
-        statisticsList.add(4, averageCommentsPerUser);
-        statisticsList.add(5, averageCommentsPerPost);
-        return statisticsList;
+        averagePostsPerUser = postsCount / usersCount;
+        averageCommentsPerUser = commentsCount / usersCount;
+        averageCommentsPerPost = commentsCount / postsCount;
+        return averagePostsPerUser;
     }
 
     public String showStatistics(Statistics statistics) {

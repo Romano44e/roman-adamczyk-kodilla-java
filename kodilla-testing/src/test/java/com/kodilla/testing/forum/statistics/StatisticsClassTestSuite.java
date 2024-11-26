@@ -1,6 +1,5 @@
 package com.kodilla.testing.forum.statistics;
 
-import com.kodilla.testing.library.LibraryDatabase;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -13,6 +12,16 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class StatisticsClassTestSuite {
+
+
+    private List<String> generateListOfUsers(int usersQuantity) {
+        List<String> resultList = new ArrayList<>();
+        for (int n = 0; n < usersQuantity; n++) {
+            String userName = "user" + n;
+            resultList.add(userName);
+        }
+        return resultList;
+    }
 
     private static int testCounter = 0;
 
@@ -39,23 +48,15 @@ public class StatisticsClassTestSuite {
     void testCalculateAdvStatistics0Posts() {
         //Given
         StatisticsClass statisticsClass = new StatisticsClass(statisticsMock);
-        int size = statisticsMock.usersNames().size();
-        size = 2;
-        int commentsCount = statisticsMock.commentsCount();
-        commentsCount = 8;
-        int postsCount = statisticsMock.postsCount();
-        postsCount = 4;
-        List<Double> ListOfStatistics = new ArrayList<Double>();
-        ListOfStatistics.add(0, 2.0);
-        ListOfStatistics.add(1, 4.0);
-        ListOfStatistics.add(2, 8.0);
-        ListOfStatistics.add(3, 2.0);
-        ListOfStatistics.add(4, 4.0);
-        ListOfStatistics.add(5, 2.0);
-        when(statisticsClass.calculateAdvStatistics(statisticsMock)).thenReturn(ListOfStatistics);
+        List<String> listOfUsers = generateListOfUsers(2);
+        int postsCountMock = 0;
+        int commentsCountMock = 8;
+        when(statisticsMock.usersNames()).thenReturn(listOfUsers);
+        when(statisticsMock.postsCount()).thenReturn(postsCountMock);
+        when(statisticsMock.commentsCount()).thenReturn(commentsCountMock);
         //When
-        List<Double> result = statisticsClass.calculateAdvStatistics(statisticsMock);
+        double avPostsPerUser = statisticsClass.calculateAdvStatistics(statisticsMock);
         //Then
-        Assertions.assertArrayEquals(ListOfStatistics.toArray(), result.toArray());
+        Assertions.assertEquals(0, avPostsPerUser);
     }
 }
