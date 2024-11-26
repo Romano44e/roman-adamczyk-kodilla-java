@@ -62,7 +62,7 @@ public class StatisticsClassTestSuite {
         //Then
         Assertions.assertEquals(0, avPostsPerUser);
         Assertions.assertEquals(4, avCommentsPerUser);
-        //Assertions.assertEquals(0, averageCommentsPerPost);
+        Assertions.assertEquals(0, averageCommentsPerPost);
     }
 
     @Test
@@ -165,8 +165,8 @@ public class StatisticsClassTestSuite {
         double avCommentsPerUser = statisticsClass.averageCommentsPerUser;
         double averageCommentsPerPost = statisticsClass.averageCommentsPerPost;
         //Then
-       // Assertions.assertEquals(0, avPostsPerUser);
-       // Assertions.assertEquals(0, avCommentsPerUser);
+        Assertions.assertEquals(0, avPostsPerUser);
+        Assertions.assertEquals(0, avCommentsPerUser);
         Assertions.assertEquals(2, averageCommentsPerPost);
     }
 
