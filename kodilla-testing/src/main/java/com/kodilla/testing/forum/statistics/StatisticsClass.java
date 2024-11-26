@@ -11,7 +11,7 @@ public class StatisticsClass {
         this.statistics = statistics;
     }
 
-    int usersCount;
+    double usersCount;
     double postsCount;
     double commentsCount;
     double averagePostsPerUser;
@@ -19,14 +19,13 @@ public class StatisticsClass {
     double averageCommentsPerPost;
 
 
-    public double calculateAdvStatistics(Statistics statistics) {
+    public void calculateAdvStatistics(Statistics statistics) {
         usersCount = statistics.usersNames().size();
         postsCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
         averagePostsPerUser = postsCount / usersCount;
         averageCommentsPerUser = commentsCount / usersCount;
         averageCommentsPerPost = commentsCount / postsCount;
-        return averagePostsPerUser;
     }
 
     public String showStatistics(Statistics statistics) {

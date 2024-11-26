@@ -49,14 +49,16 @@ public class StatisticsClassTestSuite {
         //Given
         StatisticsClass statisticsClass = new StatisticsClass(statisticsMock);
         List<String> listOfUsers = generateListOfUsers(2);
-        int postsCountMock = 0;
+        int postsCountMock = 2;
         int commentsCountMock = 8;
-        when(statisticsMock.usersNames()).thenReturn(listOfUsers);
-        when(statisticsMock.postsCount()).thenReturn(postsCountMock);
-        when(statisticsMock.commentsCount()).thenReturn(commentsCountMock);
+
         //When
-        double avPostsPerUser = statisticsClass.calculateAdvStatistics(statisticsMock);
+        double avPostsPerUser = statisticsClass.averagePostsPerUser;
+        double avCommentsPerUser = statisticsClass.averageCommentsPerUser;
+        double averageCommentsPerPost = statisticsClass.averageCommentsPerPost;
         //Then
-        Assertions.assertEquals(0, avPostsPerUser);
+        Assertions.assertEquals(1, avPostsPerUser);
+        Assertions.assertEquals(4, avCommentsPerUser);
+        Assertions.assertEquals(4, averageCommentsPerPost);
     }
 }
