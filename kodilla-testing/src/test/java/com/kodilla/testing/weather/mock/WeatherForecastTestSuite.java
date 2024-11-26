@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class WeatherForecastTestSuite {
 
-    private int testCounter = 0;
+    private static int testCounter = 1;
 
     @Mock
     private Temperatures temperaturesMock;
@@ -33,8 +33,8 @@ public class WeatherForecastTestSuite {
 
     @BeforeEach
     public void beforeEach() {
-        testCounter++;
         System.out.println("Executing test number " + testCounter);
+        testCounter++;
     }
 
     @Test
