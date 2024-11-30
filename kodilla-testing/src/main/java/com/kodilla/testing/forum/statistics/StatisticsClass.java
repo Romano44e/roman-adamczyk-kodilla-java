@@ -37,7 +37,7 @@ public class StatisticsClass {
         }
     }
 
-    public String showStatistics(Statistics statistics) {
+    public String showStatistics() {
         return "liczba użytkowników to : " + usersCount + ". " +
                 "liczba postów to : " + postsCount + ". " +
                 "liczba komentarzy to : " + commentsCount + ". " +
