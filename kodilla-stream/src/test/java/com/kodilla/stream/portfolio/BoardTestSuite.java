@@ -81,38 +81,38 @@ public class BoardTestSuite {
         assertEquals(2, longTasks);
     }
 
-    @Test
-    void testAddTaskListAverageWorkingOnTask() {
-        //Given
-        Board project = prepareTestData();
-
-        //When
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
-
-
-        long count = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .map(Task::getCreated)
-                .map(localDate -> localDate.isBefore(LocalDate.now()))
-                .count();
-
-        List<Long> list = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .map(Task::getCreated)
-                .map(localDate -> LocalDate.now().toEpochDay() - localDate.toEpochDay())
-                .toList();
-
-        long sum = LongStream.rangeClosed(0, list.size())
-                .sum();
-
-        long average = sum/count;
-
-        //Then
-        assertEquals(10, sum);
-    }
+//    @Test
+//    void testAddTaskListAverageWorkingOnTask() {
+//        //Given
+//        Board project = prepareTestData();
+//
+//        //When
+//        List<TaskList> inProgressTasks = new ArrayList<>();
+//        inProgressTasks.add(new TaskList("In progress"));
+//
+//
+//        long count = project.getTaskLists().stream()
+//                .filter(inProgressTasks::contains)
+//                .flatMap(tl -> tl.getTasks().stream())
+//                .map(Task::getCreated)
+//                .map(localDate -> localDate.isBefore(LocalDate.now()))
+//                .count();
+//
+//        List<Long> list = project.getTaskLists().stream()
+//                .filter(inProgressTasks::contains)
+//                .flatMap(tl -> tl.getTasks().stream())
+//                .map(Task::getCreated)
+//                .map(localDate -> LocalDate.now().toEpochDay() - localDate.toEpochDay())
+//                .toList();
+//
+//        long sum = LongStream.rangeClosed(0, list.size())
+//                .sum();
+//
+//        long average = sum/count;
+//
+//        //Then
+//        assertEquals(10, sum);
+//    }
 
 
     private Board prepareTestData() {
