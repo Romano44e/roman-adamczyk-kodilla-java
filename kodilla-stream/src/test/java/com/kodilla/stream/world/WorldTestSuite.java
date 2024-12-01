@@ -28,13 +28,20 @@ public class WorldTestSuite {
         northAmericaCountries.add(new Country(new BigDecimal("39000000"), "Canada"));
         northAmericaCountries.add(new Country(new BigDecimal("140000000"), "Mexico"));
 
-        List<List<Country>> continentsList = new ArrayList<>();
-        continentsList.add(europeCountries);
-        continentsList.add(asiaCountries);
-        continentsList.add(northAmericaCountries);
+        Continent europe = new Continent(europeCountries);
+        Continent asia = new Continent(asiaCountries);
+        Continent northAmerica = new Continent(northAmericaCountries);
+
+        List<Continent> continents = new ArrayList<>();
+        continents.add(europe);
+        continents.add(asia);
+        continents.add(northAmerica);
+
+        
+
         //When
-        World world = new World(continentsList);
-        BigDecimal peopleQuantityActual = world.getPeopleQuantity(continentsList);
+        World world = new World(continents);
+        BigDecimal peopleQuantityActual = world.getPeopleQuantity();
 
         //Then
         BigDecimal peopleQuantityExpected = new BigDecimal("3827000000");

@@ -4,17 +4,23 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Arrays.stream;
+
 public final class World {
 
-    List<List<Country>> continentsList = new ArrayList<>();
+    private final List<Continent> continents;
 
-    public World(List<List<Country>> continentsList) {
-        this.continentsList = continentsList;
+    public World(List<Continent> continents) {
+        this.continents = continents;
     }
 
-    public BigDecimal getPeopleQuantity(List<List<Country>> continentsList) {
-        return continentsList.stream()
-                .flatMap(countries -> countries.stream())
+    public void addContinent(Continent continent) {
+        continents.add(continent);
+    }
+
+    public BigDecimal getPeopleQuantity() {
+        return continents.stream()
+                .flatMap(continent -> continent.getCountries().stream())
                 .map(Country::getPeopleQuantity)
                 .reduce(BigDecimal.ZERO, (sum, current) -> sum.add(current));
     }
