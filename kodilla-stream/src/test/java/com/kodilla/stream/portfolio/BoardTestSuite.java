@@ -111,10 +111,14 @@ public class BoardTestSuite {
         Long sum = list.stream()
                 .reduce(0L, Long::sum);
 
+        OptionalDouble average1 = LongStream.rangeClosed(list.get(0), list.get(list.size() - 1))
+                .average();
+
         long average = sum / count;
+        double average2 = average1.getAsDouble();
 
         //Then
-        assertEquals(10, average);
+        assertEquals(10.0, average2);
     }
 
 
