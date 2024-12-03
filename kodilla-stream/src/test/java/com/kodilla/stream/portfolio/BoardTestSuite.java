@@ -7,9 +7,12 @@ import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BoardTestSuite {
@@ -81,38 +84,38 @@ public class BoardTestSuite {
         assertEquals(2, longTasks);
     }
 
-//    @Test
-//    void testAddTaskListAverageWorkingOnTask() {
-//        //Given
-//        Board project = prepareTestData();
-//
-//        //When
-//        List<TaskList> inProgressTasks = new ArrayList<>();
-//        inProgressTasks.add(new TaskList("In progress"));
-//
-//
-//        long count = project.getTaskLists().stream()
-//                .filter(inProgressTasks::contains)
-//                .flatMap(tl -> tl.getTasks().stream())
-//                .map(Task::getCreated)
-//                .map(localDate -> localDate.isBefore(LocalDate.now()))
-//                .count();
-//
-//        List<Long> list = project.getTaskLists().stream()
-//                .filter(inProgressTasks::contains)
-//                .flatMap(tl -> tl.getTasks().stream())
-//                .map(Task::getCreated)
-//                .map(localDate -> LocalDate.now().toEpochDay() - localDate.toEpochDay())
-//                .toList();
-//
-//        long sum = LongStream.rangeClosed(0, list.size())
-//                .sum();
-//
-//        long average = sum/count;
-//
-//        //Then
-//        assertEquals(10, sum);
-//    }
+    @Test
+    void testAddTaskListAverageWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+
+
+        long count = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(Task::getCreated)
+                .map(localDate -> localDate.isBefore(LocalDate.now()))
+                .count();
+
+        List<Long> list = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(Task::getCreated)
+                .map(localDate -> LocalDate.now().toEpochDay() - localDate.toEpochDay())
+                .toList();
+
+        Long sum = list.stream()
+                .reduce(0L, Long::sum);
+
+        long average = sum / count;
+
+        //Then
+        assertEquals(10, average);
+    }
 
 
     private Board prepareTestData() {
