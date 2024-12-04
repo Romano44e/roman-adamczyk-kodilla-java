@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 public class StreamMain {
     public static void main(String[] args) {
 
-        Mirror mirror = new Mirror("Roman");
+        Mirror mirror = new Mirror();
 
-        String result = mirror.mirrorText();
+        String result = mirror.mirrorText("ortsul");
 
         System.out.println(result);
 
