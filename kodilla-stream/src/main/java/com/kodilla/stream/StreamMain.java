@@ -18,8 +18,11 @@ public class StreamMain {
         Mirror mirror = new Mirror();
 
         String result = mirror.mirrorText("ortsul");
+        String vowels = mirror.getVowels("MAŁoMIASTECZKOWy");
+
 
         System.out.println(result);
+        System.out.println(vowels);
 
         /*BookDirectory theBookDirectory = new BookDirectory();
 

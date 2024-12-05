@@ -12,4 +12,18 @@ public class Mirror {
         }
         return result.toString();
     }
+
+    public String getVowels(String string) {
+
+        StringBuilder vowels = new StringBuilder();
+        char[] charArray = string.toCharArray();
+        for (int i = 0; i < charArray.length; i++) {
+            char c = charArray[i];
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y' || c == 'ó'
+            || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'Y' || c == 'Ó') {
+                vowels.append(c);
+            }
+        }
+        return vowels.toString();
+    }
 }
