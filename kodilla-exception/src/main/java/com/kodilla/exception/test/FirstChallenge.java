@@ -10,20 +10,6 @@ public class FirstChallenge {
         return a / b;
     }
 
-//        try {
-//            double v = a / b;
-//            if (b == 0) {
-//                throw new ArithmeticException();
-//            }
-//        } catch (ArithmeticException e) {
-//            System.out.println("There is dividing by zero exception: " + e.getMessage());
-//        } finally {
-//            System.out.println("An attempt was made to divide two numbers.");
-//        }
-//        System.out.println("wynik dzielenia to: ");
-//        return a / b;
-//    }
-
     /**
      * This main can throw an ArithmeticException!!!
      *@param args

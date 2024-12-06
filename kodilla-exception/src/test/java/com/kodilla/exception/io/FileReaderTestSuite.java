@@ -1,5 +1,6 @@
 package com.kodilla.exception.io;
 
+import com.kodilla.exception.test.SecondChallenge;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,6 +33,18 @@ public class FileReaderTestSuite {
                 () -> assertThrows(FileReaderException.class, () -> fileReader.readFile("nie_ma_takiego_pliku.txt")),
                 () -> assertThrows(FileReaderException.class, () -> fileReader.readFile(null)),
                 () -> assertDoesNotThrow(() -> fileReader.readFile("names.txt"))
+        );
+    }
+
+    @Test
+    void testPropablyIWillThrowException() {
+        // given
+        SecondChallenge secondChallenge = new SecondChallenge();
+        // when & then
+        assertAll(
+                () -> assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1, 1)),
+                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(2, 1)),
+                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(1.5, 1.5))
         );
     }
 }
