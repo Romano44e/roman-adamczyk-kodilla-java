@@ -1,10 +1,7 @@
 package com.kodilla.rps;
 
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -22,6 +19,9 @@ public class RpsGameTestSuite {
 
     @Mock
     private EnterName enterNameMock;
+
+    @Mock
+    private RealPlayerMove playerMoveMock;
 
     @BeforeAll
     public static void init() {
@@ -43,12 +43,11 @@ public class RpsGameTestSuite {
     void testEnterName() {
         //Given
 //        EnterName enterName = new EnterName();
-        Player player = new Player("Roman");
-        String name = player.getName();
-        when(enterNameMock.enterName()).thenReturn(name);
+        String name = "Roman";
+        when(enterNameMock.enterPlayerName()).thenReturn(name);
 //        String playerName = "Roman";
         //When
-        String playerName = enterNameMock.enterName();
+        String playerName = enterNameMock.enterPlayerName();
 //        Player player = new Player(playerName);
         //Then
         assertEquals("Roman", playerName);
@@ -62,5 +61,42 @@ public class RpsGameTestSuite {
         Round round = new Round(numberOfRounds);
         //Then
         assertEquals(3, round.getRounds());
+    }
+
+    @Nested
+    @DisplayName("Tests for player move")
+    class PlayerMove {
+        @Test
+        void testPlayerMoveRock() {
+            //Given
+            String option = "rock";
+            when(playerMoveMock.move()).thenReturn(option);
+            //When
+            String move = playerMoveMock.move();
+            //Then
+            assertEquals("rock", move);
+        }
+
+        @Test
+        void testPlayerMovePaper() {
+            //Given
+            String option = "paper";
+            when(playerMoveMock.move()).thenReturn(option);
+            //When
+            String move = playerMoveMock.move();
+            //Then
+            assertEquals("paper", move);
+        }
+
+        @Test
+        void testplayerMoveScissors() {
+            //Given
+            String option = "scissors";
+            when(playerMoveMock.move()).thenReturn(option);
+            //When
+            String move = playerMoveMock.move();
+            //Then
+            assertEquals("scissors", move);
+        }
     }
 }
