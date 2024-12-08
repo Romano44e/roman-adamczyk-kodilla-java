@@ -18,19 +18,14 @@ public class FlightScanner {
             throw new RouteNotFoundException();
         }
 
-        for (Map.Entry<String, Boolean> airport : airports.entrySet()) {
-            String key = airport.getKey();
-            String departureAirport = flight.getDepartureAirport();
-            String arrivalAirport = flight.getArrivalAirport();
 
-            if (key.equals(departureAirport)) {
-                System.out.println(departureAirport + " Airport availibility:");
-                System.out.println(airport.getValue());
-            }
-
-            if (key.equals(arrivalAirport)) {
-                System.out.println(arrivalAirport + " Airport availibility:");
-                System.out.println(airport.getValue());
+        if (airports.containsKey(flight.getDepartureAirport()) && airports.containsKey(flight.getArrivalAirport())) {
+            Boolean departureAvailibility = airports.get(flight.getDepartureAirport());
+            Boolean arrivalAvailibility = airports.get(flight.getArrivalAirport());
+            if (departureAvailibility.equals(true) && arrivalAvailibility.equals(true)) {
+                System.out.println("flight from " + flight.getDepartureAirport() + " to " + flight.getArrivalAirport() + " is available.");
+            } else {
+                System.out.println("flight from " + flight.getDepartureAirport() + " to " + flight.getArrivalAirport() + " is not available.");
             }
         }
     }

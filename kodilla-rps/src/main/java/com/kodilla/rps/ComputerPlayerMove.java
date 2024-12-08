@@ -19,6 +19,7 @@ public class ComputerPlayerMove implements PlayerMove {
         int range = elements.size();
         int drawnNumber = random.nextInt(range);
 
+
         System.out.println("Computer player have selected: ");
         System.out.println(elements.get(drawnNumber));
 
