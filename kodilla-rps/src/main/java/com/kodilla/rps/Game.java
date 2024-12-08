@@ -37,19 +37,25 @@ public class Game {
             String computerMove = computerPlayerMove.move();
             System.out.println();
 
-            if (playermove.equals("rock") && computerMove.equals("scissors") ) {
-                System.out.println("You win this round!");
-                playerPoints++;
-            } else if (playermove.equals("rock") && computerMove.equals("paper") ) {
-                System.out.println("You lose this round!");
+            if (playermove.equals("rock") && computerMove.equals("paper") ) {
+                System.out.println("You loose this round!");
                 computerPoints++;
             } else if (playermove.equals("paper") && computerMove.equals("rock") ) {
                 System.out.println("You win this round!");
                 playerPoints++;
-            } else if (playermove.equals("paper") && computerMove.equals("scissors") ) {
+            }
+
+
+            if (playermove.equals("rock") && computerMove.equals("scissors") ) {
+                System.out.println("You win this round!");
+                playerPoints++;
+            } else if (playermove.equals("scissors") && computerMove.equals("rock") ) {
                 System.out.println("You lose this round!");
                 computerPoints++;
-            } else if (playermove.equals("scissors") && computerMove.equals("rock") ) {
+            }
+
+
+            if (playermove.equals("paper") && computerMove.equals("scissors") ) {
                 System.out.println("You loose this round!");
                 computerPoints++;
             } else if (playermove.equals("scissors") && computerMove.equals("paper") ) {

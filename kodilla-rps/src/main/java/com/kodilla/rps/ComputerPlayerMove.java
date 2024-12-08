@@ -10,19 +10,17 @@ public class ComputerPlayerMove implements PlayerMove {
     public String move() {
 
         Random random = new Random();
+        PossibleMoves possibleMoves = new PossibleMoves();
 
-        List<String> elements = new ArrayList<>();
-        elements.add("rock");
-        elements.add("paper");
-        elements.add("scissors");
+        List<String> moves = possibleMoves.getMoves();
 
-        int range = elements.size();
+        int range = moves.size();
         int drawnNumber = random.nextInt(range);
 
 
-        System.out.println("Computer player have selected: ");
-        System.out.println(elements.get(drawnNumber));
+        System.out.println("Computer player have selected: " + "\n"
+        + moves.get(drawnNumber));
 
-        return elements.get(drawnNumber);
+        return moves.get(drawnNumber);
     }
 }

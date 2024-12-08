@@ -99,4 +99,45 @@ public class RpsGameTestSuite {
             assertEquals("scissors", move);
         }
     }
+
+    @Test
+    void testRealPlayerMoveRock() {
+        //Given
+        PossibleMoves possibleMoves = new PossibleMoves();
+        //When
+        String move = possibleMoves.getMoves().get(0);
+        //Then
+        assertEquals("rock", move);
+    }
+
+    @Test
+    void testRealPlayerMovePaper() {
+        //Given
+        PossibleMoves possibleMoves = new PossibleMoves();
+        //When
+        String move = possibleMoves.getMoves().get(1);
+        //Then
+        assertEquals("paper", move);
+    }
+
+    @Test
+    void testRealPlayerMoveScissors() {
+        //Given
+        PossibleMoves possibleMoves = new PossibleMoves();
+        //When
+        String move = possibleMoves.getMoves().get(2);
+        //Then
+        assertEquals("scissors", move);
+    }
+
+//    @Test
+//    void testMoveComputerPlayerMove() {
+//        //Given
+//        PossibleMoves possibleMoves = new PossibleMoves();
+//        ComputerPlayerMove computerMove = new ComputerPlayerMove();
+//        //When
+//        String move = computerMove.move();
+//        //Then
+//        assertEquals("rock" , move);
+//    }
 }

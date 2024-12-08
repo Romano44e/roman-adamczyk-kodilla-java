@@ -8,21 +8,19 @@ public class RealPlayerMove implements PlayerMove {
 
     @Override
     public String move() {
+        PossibleMoves possibleMoves = new PossibleMoves();
         System.out.println("please select option: ");
         String choice = "";
         String option = scanner.nextLine();
         switch (option) {
             case "1" -> {
-                choice = "rock";
-                System.out.println("You have selected: ");
+                choice = possibleMoves.getMoves().get(0);
             }
             case "2" -> {
-                choice = "paper";
-                System.out.println("You have selected: ");
+                choice = possibleMoves.getMoves().get(1);
             }
             case "3" -> {
-                choice = "scissors";
-                System.out.println("You have selected: ");
+                choice = possibleMoves.getMoves().get(2);
             }
             case "x" -> {
                 choice = "end game. Are you sure you want to exit? Please enter yes or no";
@@ -45,7 +43,9 @@ public class RealPlayerMove implements PlayerMove {
                 }
             }
         }
-        System.out.println(choice);
+        System.out.println();
+        System.out.println("You have selected: " + "\n"
+        + choice);
         return choice;
     }
 }
