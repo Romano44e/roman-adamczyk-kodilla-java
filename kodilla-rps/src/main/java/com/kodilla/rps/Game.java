@@ -1,5 +1,8 @@
 package com.kodilla.rps;
 
+import java.security.KeyStore;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Game {
@@ -43,22 +46,35 @@ public class Game {
                 game.startGame();
             }
 
-            String computerMove = computerPlayerMove.move();
+            computerPlayerMove.move();
             System.out.println();
 
-            if ((playermove.equals("rock") && computerMove.equals("paper"))
-                    || (playermove.equals("scissors") && computerMove.equals("rock"))
-                    || (playermove.equals("paper") && computerMove.equals("scissors"))) {
+            PossibleResults possibleResults = new PossibleResults();
+            Map<PlayersMove, String> results = possibleResults.getResults();
+
+            String result = results.get(new PlayersMove(realPlayerMove.move(), computerPlayerMove.move()));
+
+            if (result.equals("You loose this round!")) {
                 System.out.println("You loose this round!");
                 computerPoints++;
-            } else if ((playermove.equals("paper") && computerMove.equals("rock"))
-                    || (playermove.equals("rock") && computerMove.equals("scissors"))
-                    || (playermove.equals("scissors") && computerMove.equals("paper"))) {
+            } else if (result.equals("You win this round!")) {
                 System.out.println("You win this round!");
                 playerPoints++;
-            } else if (playermove.equals(computerMove)) {
-                System.out.println("It's a draw!");
             }
+
+//            if ((playermove.equals("rock") && computerMove.equals("paper"))
+//                    || (playermove.equals("scissors") && computerMove.equals("rock"))
+//                    || (playermove.equals("paper") && computerMove.equals("scissors"))) {
+//                System.out.println("You loose this round!");
+//                computerPoints++;
+//            } else if ((playermove.equals("paper") && computerMove.equals("rock"))
+//                    || (playermove.equals("rock") && computerMove.equals("scissors"))
+//                    || (playermove.equals("scissors") && computerMove.equals("paper"))) {
+//                System.out.println("You win this round!");
+//                playerPoints++;
+//            } else if (playermove.equals(computerMove)) {
+//                System.out.println("It's a draw!");
+//            }
 
             System.out.println("The current result is: " + "\n"
                     + "you: " + playerPoints + "\n"
