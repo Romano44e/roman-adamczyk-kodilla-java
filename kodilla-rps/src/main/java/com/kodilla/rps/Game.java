@@ -27,22 +27,18 @@ public class Game {
         System.out.println();
 
         boolean end = false;
-        boolean end1 = false;
-        boolean endGame = false;
         int playerPoints = 0;
         int computerPoints = 0;
 
-        while (!end1) {
-
+        while (!end) {
             String playermove = realPlayerMove.move();
             System.out.println();
 
-            if (playermove.equals("You exit the game. Thank you for using RPS!")) {
-//                end1 = true;
+            if (playermove.equals("exit")) {
                 break;
             }
 
-            if (playermove.equals("The game has started again!")) {
+            if (playermove.equals("start")) {
                 Game game = new Game();
                 game.startGame();
             }
@@ -50,55 +46,38 @@ public class Game {
             String computerMove = computerPlayerMove.move();
             System.out.println();
 
-            if (playermove.equals("rock") && computerMove.equals("paper")) {
+            if ((playermove.equals("rock") && computerMove.equals("paper"))
+                    || (playermove.equals("scissors") && computerMove.equals("rock"))
+                    || (playermove.equals("paper") && computerMove.equals("scissors"))) {
                 System.out.println("You loose this round!");
                 computerPoints++;
-            } else if (playermove.equals("paper") && computerMove.equals("rock")) {
+            } else if ((playermove.equals("paper") && computerMove.equals("rock"))
+                    || (playermove.equals("rock") && computerMove.equals("scissors"))
+                    || (playermove.equals("scissors") && computerMove.equals("paper"))) {
                 System.out.println("You win this round!");
                 playerPoints++;
+            } else if (playermove.equals(computerMove)) {
+                System.out.println("It's a draw!");
             }
-
-
-            if (playermove.equals("rock") && computerMove.equals("scissors")) {
-                System.out.println("You win this round!");
-                playerPoints++;
-            } else if (playermove.equals("scissors") && computerMove.equals("rock")) {
-                System.out.println("You lose this round!");
-                computerPoints++;
-            }
-
-
-            if (playermove.equals("paper") && computerMove.equals("scissors")) {
-                System.out.println("You loose this round!");
-                computerPoints++;
-            } else if (playermove.equals("scissors") && computerMove.equals("paper")) {
-                System.out.println("You win this round!");
-                playerPoints++;
-            }
-
 
             System.out.println("The current result is: " + "\n"
                     + "you: " + playerPoints + "\n"
                     + "computer: " + computerPoints + "\n");
 
-
             if (playerPoints == roundsNumber) {
                 System.out.println("Congratulations " + player1 + "! You win the game!");
                 RealPlayerMove realPlayerMove1 = new RealPlayerMove();
-                endGame = realPlayerMove1.endGameMove();
                 playerPoints = 0;
                 computerPoints = 0;
-                end1 = endGame;
+                end = realPlayerMove1.endGameMove();
             }
-
 
             if (computerPoints == roundsNumber) {
                 System.out.println("I'm sorry " + player1 + " , but you lost the game!");
                 RealPlayerMove realPlayerMove1 = new RealPlayerMove();
-                endGame = realPlayerMove1.endGameMove();
                 playerPoints = 0;
                 computerPoints = 0;
-                end1 = endGame;
+                end = realPlayerMove1.endGameMove();
             }
         }
     }

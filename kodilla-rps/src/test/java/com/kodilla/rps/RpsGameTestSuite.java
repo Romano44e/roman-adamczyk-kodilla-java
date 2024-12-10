@@ -129,15 +129,4 @@ public class RpsGameTestSuite {
         //Then
         assertEquals("scissors", move);
     }
-
-//    @Test
-//    void testMoveComputerPlayerMove() {
-//        //Given
-//        PossibleMoves possibleMoves = new PossibleMoves();
-//        ComputerPlayerMove computerMove = new ComputerPlayerMove();
-//        //When
-//        String move = computerMove.move();
-//        //Then
-//        assertEquals("rock" , move);
-//    }
 }

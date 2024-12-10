@@ -27,7 +27,7 @@ public class RealPlayerMove implements PlayerMove {
                 System.out.println("You have selected " + choice);
                 String yesOrNo = scanner.nextLine();
                 if (yesOrNo.equals("yes")) {
-                    choice = "You exit the game. Thank you for using RPS!";
+                    choice = "exit";
                 } else if (yesOrNo.equals("no")) {
                     choice = "Please select option!";
                 }
@@ -37,7 +37,7 @@ public class RealPlayerMove implements PlayerMove {
                 System.out.println("You have selected " + option);
                 String yesOrNo = scanner.nextLine();
                 if (yesOrNo.equals("yes")) {
-                    choice = "The game has started again!";
+                    choice = "start";
                 } else if (yesOrNo.equals("no")) {
                     choice = "Please select option!";
                 }
@@ -56,17 +56,13 @@ public class RealPlayerMove implements PlayerMove {
         String endChoice = scanner.nextLine();
         if (endChoice.equals("x")) {
             System.out.println();
-            System.out.println("You exit the game. Thank you for using RPS!");
+            System.out.println("exit");
             endGame = true;
         } else if (endChoice.equals("n")) {
             System.out.println();
-            System.out.println("You just started a new game");
+            System.out.println("start");
             Game game = new Game();
             game.startGame();
-//            System.out.println();
-//            KeyOperation keyOperation2 = new KeyOperation();
-//            keyOperation2.showStartKeyInformation();
-//            System.out.println();
         }
         return endGame;
     }
