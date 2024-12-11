@@ -44,37 +44,30 @@ public class Game {
             if (playermove.equals("start")) {
                 Game game = new Game();
                 game.startGame();
+                break;
             }
 
-            computerPlayerMove.move();
+            String computerMove = computerPlayerMove.move();
             System.out.println();
 
+            String move = playermove + " & " + computerMove;
+
             PossibleResults possibleResults = new PossibleResults();
-            Map<PlayersMove, String> results = possibleResults.getResults();
+            Map<String, String> results = possibleResults.getResults();
 
-            String result = results.get(new PlayersMove(realPlayerMove.move(), computerPlayerMove.move()));
+            String result = results.get(move);
 
-            if (result.equals("You loose this round!")) {
-                System.out.println("You loose this round!");
-                computerPoints++;
-            } else if (result.equals("You win this round!")) {
-                System.out.println("You win this round!");
-                playerPoints++;
+            switch (result) {
+                case "loose" -> {
+                    System.out.println("You loose this round!");
+                    computerPoints++;
+                }
+                case "win" -> {
+                    System.out.println("You win this round!");
+                    playerPoints++;
+                }
+                case "tie" -> System.out.println("It's a draw!");
             }
-
-//            if ((playermove.equals("rock") && computerMove.equals("paper"))
-//                    || (playermove.equals("scissors") && computerMove.equals("rock"))
-//                    || (playermove.equals("paper") && computerMove.equals("scissors"))) {
-//                System.out.println("You loose this round!");
-//                computerPoints++;
-//            } else if ((playermove.equals("paper") && computerMove.equals("rock"))
-//                    || (playermove.equals("rock") && computerMove.equals("scissors"))
-//                    || (playermove.equals("scissors") && computerMove.equals("paper"))) {
-//                System.out.println("You win this round!");
-//                playerPoints++;
-//            } else if (playermove.equals(computerMove)) {
-//                System.out.println("It's a draw!");
-//            }
 
             System.out.println("The current result is: " + "\n"
                     + "you: " + playerPoints + "\n"
@@ -86,6 +79,7 @@ public class Game {
                 playerPoints = 0;
                 computerPoints = 0;
                 end = realPlayerMove1.endGameMove();
+                break;
             }
 
             if (computerPoints == roundsNumber) {
@@ -94,6 +88,7 @@ public class Game {
                 playerPoints = 0;
                 computerPoints = 0;
                 end = realPlayerMove1.endGameMove();
+                break;
             }
         }
     }

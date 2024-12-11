@@ -5,18 +5,18 @@ import java.util.Map;
 
 public class PossibleResults {
 
+    public Map<String, String> getResults() {
 
-    public Map<PlayersMove, String> getResults() {
-        Map<PlayersMove, String> results = new HashMap<PlayersMove, String>();
-        results.put(new PlayersMove("rock", "paper"), "You loose this round!");
-        results.put(new PlayersMove("scissors", "rock"), "You loose this round!");
-        results.put(new PlayersMove("paper", "scissors"), "You loose this round!");
-        results.put(new PlayersMove("paper", "rock"), "You win this round!");
-        results.put(new PlayersMove("rock", "scissors"), "You win this round!");
-        results.put(new PlayersMove("scissors", "paper"), "You win this round!");
-        results.put(new PlayersMove("rock", "rock"), "It's a draw!");
-        results.put(new PlayersMove("paper", "paper"), "It's a draw!");
-        results.put(new PlayersMove("scissors", "scissors"), "It's a draw!");
+        Map<String, String> results = new HashMap<String, String>();
+        results.put("rock & paper", "loose");
+        results.put("scissors & rock", "loose");
+        results.put("paper & scissors", "loose");
+        results.put("paper & rock", "win");
+        results.put("rock & scissors", "win");
+        results.put("scissors & paper", "win");
+        results.put("rock & rock", "tie");
+        results.put("paper & paper", "tie");
+        results.put("scissors & scissors", "tie");
 
         return results;
     }

@@ -42,13 +42,10 @@ public class RpsGameTestSuite {
     @Test
     void testEnterName() {
         //Given
-//        EnterName enterName = new EnterName();
         String name = "Roman";
         when(enterNameMock.enterPlayerName()).thenReturn(name);
-//        String playerName = "Roman";
         //When
         String playerName = enterNameMock.enterPlayerName();
-//        Player player = new Player(playerName);
         //Then
         assertEquals("Roman", playerName);
     }
