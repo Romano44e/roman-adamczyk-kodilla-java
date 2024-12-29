@@ -13,7 +13,7 @@ public class Application {
         String collect = movieStore.getMovies().entrySet().stream()
                 .flatMap(entry -> entry.getValue().stream())
                 .collect(Collectors.joining("!"));
-        
+
         System.out.println(collect);
     }
 }
