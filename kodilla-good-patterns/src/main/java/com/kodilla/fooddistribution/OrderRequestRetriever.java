@@ -10,14 +10,15 @@ public class OrderRequestRetriever {
         String userName = scanner.nextLine();
         User user = new User(userName);
 
-        System.out.println("Wpisz dostawcę: ");
+        System.out.println("Wybierz dostawcę: ");
         String supplier = scanner.nextLine();
-        System.out.println("Wpisz produkt: ");
+        System.out.println("Wybierz produkt: ");
         String product = scanner.nextLine();
-        System.out.println("Wpisz ilość: ");
+        System.out.println("Wybierz ilość: ");
         int quantity = scanner.nextInt();
         Supplier supplier1 = new Supplier(supplier, product, quantity);
 
         return new OrderRequest(user, supplier1);
     }
+
 }
