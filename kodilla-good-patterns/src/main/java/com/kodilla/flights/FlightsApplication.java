@@ -6,6 +6,8 @@ public class FlightsApplication {
 
         FlightScanner flightScanner = new FlightScanner();
         flightScanner.findDirectFlightFrom("Kraków");
+        flightScanner.findDirectFlightTo("Gdańsk");
+        flightScanner.findIndirectFlight("Kraków", "Wrocław");
 
     }
 }
