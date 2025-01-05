@@ -20,6 +20,6 @@ public class Supplier implements OrderService{
 
     @Override
     public void process() {
-        System.out.println("The product has been ordered from " + supplierName);
+        System.out.println("The product has been ordered from " + supplierName + " in the quantity of " + quantity);
     }
 }

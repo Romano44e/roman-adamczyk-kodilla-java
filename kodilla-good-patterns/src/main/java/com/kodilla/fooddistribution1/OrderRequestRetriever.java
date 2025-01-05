@@ -2,13 +2,25 @@ package com.kodilla.fooddistribution1;
 
 public class OrderRequestRetriever {
 
-    public Supplier retrieveSupplierAndQuantityOrderRequest() {
-        Supplier supplier = new Supplier("ExtraFoodShop", 5);
-        return supplier;
+    String orderProductName;
+    String storeName;
+    int quantity;
+
+    public OrderRequestRetriever(String productName, String storeName, int quantity) {
+        this.orderProductName = productName;
+        this.storeName = storeName;
+        this.quantity = quantity;
     }
 
-    public String retrieveProductOrderRequest() {
-        String product = "Honey";
-        return product;
+    public String getOrderProductName() {
+        return orderProductName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getStoreName() {
+        return storeName;
     }
 }
