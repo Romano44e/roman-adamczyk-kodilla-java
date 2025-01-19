@@ -13,8 +13,13 @@ public class DrivingTask implements Task {
     }
 
     @Override
-    public String executeTask() {
-        return "Executing driving task";
+    public boolean executeTask() {
+        String taskStatus = "done";
+        if (taskStatus.equals("done")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -24,9 +29,6 @@ public class DrivingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        if (where.equals("")) {
-            return true;
-        }
-        return false;
+        return executeTask();
     }
 }

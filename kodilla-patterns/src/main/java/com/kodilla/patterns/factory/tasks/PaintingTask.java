@@ -13,8 +13,13 @@ public class PaintingTask implements Task {
     }
 
     @Override
-    public String executeTask() {
-        return "Executing painting task";
+    public boolean executeTask() {
+        String taskStatus = "done";
+        if (taskStatus.equals("done")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -24,9 +29,6 @@ public class PaintingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        if (whatToPaint.equals("")) {
-            return true;
-        }
-        return false;
+        return executeTask();
     }
 }
