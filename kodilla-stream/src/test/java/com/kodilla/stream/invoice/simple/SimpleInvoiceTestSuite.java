@@ -18,5 +18,6 @@ public class SimpleInvoiceTestSuite {
 
         //Then
         assertEquals(108.975, invoice.getValueToPay(), 0.001);
+        
     }
 }
