@@ -1,0 +1,38 @@
+CREATE TABLE ISSUESLISTS
+(
+    ID SERIAL PRIMARY KEY,
+    NAME VARCHAR(150)
+);
+
+CREATE TABLE ISSUES
+(
+    ID SERIAL PRIMARY KEY,
+    ISSUESLIST_ID BIGINT UNSIGNED NOT NULL,
+    SUMMARY VARCHAR(30),
+    DESCRIPTION VARCHAR(255),
+    USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLISTS(ID),
+    FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+);
+
+INSERT INTO ISSUESLISTS (NAME) VALUES
+('ToDo'),
+('In progress'),
+('Done');
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO) VALUES
+(1, 'Plan projektu', 'Opracowanie szczegółowego planu działania na kolejny tydzień, uwzględniającego kluczowe zadania i priorytety zespołu.', 1),
+(1, 'Raport kwartalny', 'Zebranie i analiza danych finansowych oraz operacyjnych, które zostaną wykorzystane w raporcie kwartalnym dla zarządu.', 5),
+(1, 'Aktualizacja dokumentacji', 'Uzupełnienie brakujących informacji w dokumentacji technicznej, w tym szczegółowych opisów nowych funkcji systemu.', 2),
+(1, 'Planowanie spotkania', 'Organizacja i zaplanowanie szczegółowego harmonogramu spotkania z zespołem, w tym wybór tematu i przygotowanie agendy.', 3),
+(1, 'Przygotowanie prezentacji', 'Stworzenie prezentacji na potrzeby spotkania zarządu, w tym zebrane dane, wykresy oraz proponowane rozwiązania strategiczne.', 4),
+(2, 'Diagram procesów', 'Tworzenie szczegółowego diagramu ilustrującego przepływ procesów biznesowych w organizacji, z uwzględnieniem kluczowych punktów decyzyjnych.', 4),
+(2, 'Moduł aplikacji', 'Rozwój i implementacja nowego modułu w aplikacji mobilnej, obejmującego funkcje zarządzania zadaniami przez użytkowników.', 2),
+(2, 'Analiza kampanii', 'Przeprowadzenie szczegółowej analizy wyników testów A/B ostatniej kampanii marketingowej, aby określić efektywność poszczególnych strategii.', 1),
+(2, 'Przegląd błędów', 'Analiza zgłoszeń błędów od użytkowników oraz ich priorytetyzacja w celu wprowadzenia odpowiednich poprawek w systemie..', 5),
+(2, 'Makiety UX', 'Projektowanie interaktywnych makiet nowej funkcji platformy, które mają poprawić doświadczenie użytkownika i zwiększyć konwersje.', 3),
+(3, 'Budżet kwartalny', 'Ostateczne zatwierdzenie budżetu operacyjnego na nadchodzący kwartał, uwzględniającego priorytety strategiczne firmy.', 3),
+(3, 'Warsztaty szkoleniowe', 'Przeprowadzenie warsztatów dla zespołu, koncentrujących się na nowych narzędziach i procesach wewnętrznych firmy.', 2),
+(3, 'Aktualizacja strony', 'Wprowadzenie poprawek i nowych treści na stronie internetowej firmy, w tym aktualizacji sekcji "O nas" oraz "Oferta".', 1),
+(3, 'Poprawki w CRM', 'Implementacja nowych funkcji i poprawek w systemie CRM, które poprawiły wydajność oraz doświadczenie użytkowników.', 4),
+(3, 'Umowa z dostawcą', 'Finalizacja negocjacji i podpisanie umowy z nowym dostawcą usług IT, obejmującej szczegółowe warunki współpracy.', 5);
