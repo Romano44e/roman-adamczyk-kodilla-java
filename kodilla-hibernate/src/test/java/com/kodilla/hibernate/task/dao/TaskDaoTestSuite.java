@@ -2,6 +2,7 @@ package com.kodilla.hibernate.task.dao;
 
 import com.kodilla.hibernate.task.Task;
 import com.kodilla.hibernate.task.TaskFinancialDetails;
+import com.kodilla.hibernate.task.TaskList1;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,7 @@ public class TaskDaoTestSuite {
     @Autowired
     private TaskDao taskDao;
     private static final String DESCRIPTION = "Test: Learn Hibernate";
+    private TaskList1 taskList;
 
     @Test
     void testTaskDaoSave() {
@@ -71,7 +73,7 @@ public class TaskDaoTestSuite {
         assertNotEquals(0, id);
 
         //CleanUp
-//        taskDao.deleteById(id);
+        taskDao.deleteById(id);
 
 
     }

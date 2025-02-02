@@ -13,6 +13,7 @@ public class Task {
     private Date created;
     private int duration;
     private TaskFinancialDetails taskFinancialDetails;
+    private TaskList1 taskList;
 
     public Task() {
     }
@@ -53,6 +54,12 @@ public class Task {
         return taskFinancialDetails;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "TASKLISTS_ID")
+    public TaskList1 getTaskList() {
+        return taskList;
+    }
+
     private void setId(int id) {
         this.id = id;
     }
@@ -71,5 +78,9 @@ public class Task {
 
     public void setTaskFinancialDetails(TaskFinancialDetails taskFinancialDetails) {
         this.taskFinancialDetails = taskFinancialDetails;
+    }
+
+    public void setTaskList(TaskList1 taskList) {
+        this.taskList = taskList;
     }
 }
