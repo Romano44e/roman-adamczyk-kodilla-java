@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -13,6 +16,8 @@ public class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany() {
@@ -58,6 +63,48 @@ public class CompanyDaoTestSuite {
         //} catch (Exception e) {
         //    //do nothing
         //}
+
+    }
+
+    @Test
+    void NamedQueries() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee janKovalsky = new Employee("Jan", "Kovalsky");
+        Employee AngelinaNovak = new Employee("Angelina", "Novak");
+        Employee MichaelSmith = new Employee("Michael", "Smith");
+
+        Company kodilla = new Company("Kodilla");
+        Company kodillaPlus = new Company("Kodilla Plus");
+        Company modernMachines = new Company("Modern Machines");
+
+        johnSmith.getCompanies().add(kodilla);
+        johnSmith.getCompanies().add(kodillaPlus);
+        johnSmith.getCompanies().add(modernMachines);
+
+        kodilla.getEmployees().add(johnSmith);
+        kodilla.getEmployees().add(janKovalsky);
+        kodilla.getEmployees().add(AngelinaNovak);
+        kodilla.getEmployees().add(MichaelSmith);
+
+        employeeDao.save(johnSmith);
+        int id = johnSmith.getId();
+        companyDao.save(kodilla);
+        int id1 = kodilla.getId();
+
+        //When
+        List<Employee> employeeSmithList = employeeDao.retrieveEmployeeWithLastname("Smith");
+        List<Company> companiesListStartWith = companyDao.retrieveCompanyWithNameStartWith();
+
+        //Then
+        try {
+            assertEquals(2, employeeSmithList.size());
+            assertEquals(2, companiesListStartWith.size());
+        } finally {
+            //CleanUp
+            companyDao.deleteById(id1);
+            employeeDao.deleteById(id);
+        }
 
     }
 }
