@@ -94,7 +94,7 @@ public class CompanyDaoTestSuite {
 
         //When
         List<Employee> employeeSmithList = employeeDao.retrieveEmployeeWithLastname("Smith");
-        List<Company> companiesListStartWith = companyDao.retrieveCompanyWithNameStartWith();
+        List<Company> companiesListStartWith = companyDao.retrieveCompanyWithNameStartWith("Kod%");
 
         //Then
         try {
@@ -102,8 +102,8 @@ public class CompanyDaoTestSuite {
             assertEquals(2, companiesListStartWith.size());
         } finally {
             //CleanUp
-            companyDao.deleteById(id1);
-            employeeDao.deleteById(id);
+//            companyDao.deleteById(id1);
+//            employeeDao.deleteById(id);
         }
 
     }

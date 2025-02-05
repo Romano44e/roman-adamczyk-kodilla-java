@@ -8,7 +8,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "Company.retrieveCompanyWithNameStartWith",
         query = "SELECT * FROM COMPANIES" +
-        " WHERE COMPANY_NAME LIKE 'Kod%'",
+        " WHERE COMPANY_NAME LIKE :COMPANYNAME",
         resultClass = Company.class
 )
 @Entity
