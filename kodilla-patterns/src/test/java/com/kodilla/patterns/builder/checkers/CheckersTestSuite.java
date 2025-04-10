@@ -19,7 +19,7 @@ public class CheckersTestSuite {
         System.out.println(checkers.getBoard());                    // [8]
 
         //When
-        Figure figureOne = checkers.getBoard().getFigure(3, 0);    // [9]
+        Figure figureOne = checkers.getBoard().getFigure(0, 3);    // [9]
         Figure figureTwo = checkers.getBoard().getFigure(7, 9);    // [10]
         Figure figureThree = checkers.getBoard().getFigure(2, 0);  // [11]
         Figure figureFour = checkers.getBoard().getFigure(1, 1);   // [12]
